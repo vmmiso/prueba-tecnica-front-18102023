@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { useFetchUsers } from "../hooks/useUsersList";
+import { useAlbumsStore } from "../store/albums";
 
 const List = () => {
   const { data: users, isLoading } = useFetchUsers();
+
+  const recentVisited = useAlbumsStore((state) => state.recentVisited);
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -19,6 +22,11 @@ const List = () => {
           })}
         </ul>
       )}
+
+      <b>
+        Albums recently visited:{" "}
+        {recentVisited.map((albumId) => albumId + ", ")}
+      </b>
     </div>
   );
 };
