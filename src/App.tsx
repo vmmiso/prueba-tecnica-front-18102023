@@ -1,5 +1,14 @@
+import { Route, Routes } from "react-router-dom";
+import List from "./pages/List";
+import User from "./pages/User";
+
 function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <Routes>
+      <Route path="/" element={<List />} />
+      <Route path="user/:id" element={<User />} />
+    </Routes>
+  );
 }
 
 export default App;
